@@ -1,7 +1,47 @@
-main {
-  background-color: blanchedalmond;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: 500;
-  font-size: 20px;
-  text-align: center;
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Estilos generales */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+a:hover {
+  text-decoration: underline;
 }
