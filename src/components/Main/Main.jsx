@@ -1,9 +1,10 @@
+import ItemListContainer from "../ItemListContainer/ItemListContainer";
 import styles from "./index.module.css"
 
 function Main() {
     return (
         <main className={styles.main}>
-            Contenido principal
+            <ItemListContainer greeting="¡Bienvenidos a nuestra tienda!" />
 
             <h6><a href="https://www.flaticon.com/free-icons/puzzle" title="puzzle icons">Favicon: Hilmy Abiyyu A</a> / <a href="https://www.flaticon.com/free-icons/board-game" title="board game icons">Logo: Magnific</a></h6>
         
