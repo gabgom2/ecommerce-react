@@ -2,7 +2,7 @@ import styles from "./index.module.css"
 
 function Footer() {
     return (
-        <footer>
+        <footer className={styles.footer}>
             Página web creada con React JS por <a href="https://github.com/gabgom2/">gabgom2</a>
         </footer>
     )
