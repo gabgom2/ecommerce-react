@@ -1,0 +1,28 @@
+.header{
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.logo{
+    justify-content: start;
+    display: flex;
+    align-items: center;
+    max-height: 32px;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.headerRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.headerTitle{
+    font-family: "Georgia", serif;
+    font-weight: 700;
+}

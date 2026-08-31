@@ -1,0 +1,16 @@
+.cartWidget {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    gap: 0.6rem;
+}
+
+.cartIcon {
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.cartIcon:hover {
+    color: #666;
+}
