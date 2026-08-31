@@ -5,13 +5,13 @@ function Navbar() {
         <nav>
             <ul className={styles.navbar__list} >
                 <a href="#">
-                    <li className={styles.navbar__link}>Link 1</li>
+                    <li className={styles.navbar__link}>Juegos de Estrategia</li>
                 </a>
                 <a href="#">
-                    <li className={styles.navbar__link}>Link 2</li>
+                    <li className={styles.navbar__link}>Juegos de Fiesta</li>
                 </a>
                 <a href="#">
-                    <li className={styles.navbar__link}>Link 3</li>
+                    <li className={styles.navbar__link}>Rompecabezas</li>
                 </a>
             </ul>
         </nav>
