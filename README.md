@@ -7,6 +7,10 @@ Tecnologías utilizadas:
 * React JS
 * Vite
 
+Librerías utilizadas:
+
+* react-icons
+
 # Instalación y ejecución
 
 ## Requisitos
