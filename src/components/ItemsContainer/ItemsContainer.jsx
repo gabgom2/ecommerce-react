@@ -25,7 +25,7 @@ function ItemsContainer() {
 
 
     return (
-        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
             {/* <h3>{props.greeting}</h3> */}
         
             {products.map( product => (
