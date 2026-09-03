@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito:wght@400;500;600;700&display=swap');
+
 
 /* Reset */
 
@@ -37,6 +39,11 @@ select {
 }
 
 /* Estilos generales */
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
 
 a {
   color: inherit;

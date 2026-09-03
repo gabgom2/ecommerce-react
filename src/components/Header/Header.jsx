@@ -5,11 +5,13 @@ import CartWidget from "../CartWidget/CartWidget.jsx";
 
 function Header() {
     return (
-        <header className={styles.header}>
+        <header className="flex items-center justify-between bg-emerald-300 px-8 py-3 shadow-sm">
+
+
 
             <div className={styles.logo}>
                 <img src={logo} alt="Logo del comercio" />
-                <h1 className={styles.headerTitle}>BoardMania</h1>
+                <h1 className={` ${styles.headerTitle} text-4xl`}>BoardMania</h1>
             </div>
 
             <div className={styles.headerRight}>
