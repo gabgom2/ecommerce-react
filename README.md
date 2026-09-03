@@ -10,6 +10,7 @@ Tecnologías utilizadas:
 Librerías utilizadas:
 
 * react-icons
+* TailwindCSS
 
 # Instalación y ejecución
 
@@ -30,6 +31,7 @@ cd <NOMBRE_DEL_PROYECTO>
 Instalar las dependencias:
 
 ``npm install``
+
 Ejecutar el proyecto:
 
 ``npm run dev``
