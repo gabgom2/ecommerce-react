@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Catan",
+    "description": "Un clásico juego de estrategia en el que tendrás que comerciar, construir y expandir tus asentamientos.",
+    "price": 45000,
+    "stock": 12,
+    "image": ""
+  },
+  {
+    "id": 2,
+    "title": "Carcassonne",
+    "description": "Construye ciudades, caminos y monasterios mientras colocas tus seguidores para conseguir la mayor cantidad de puntos.",
+    "price": 38000,
+    "stock": 8,
+    "image": ""
+  },
+  {
+    "id": 3,
+    "title": "Dixit",
+    "description": "Un juego creativo de imágenes e imaginación donde tendrás que interpretar pistas y descubrir qué carta eligió el narrador.",
+    "price": 32000,
+    "stock": 15,
+    "image": ""
+  },
+  {
+    "id": 4,
+    "title": "Ticket to Ride",
+    "description": "Compite por construir rutas ferroviarias entre distintas ciudades y completa tus recorridos antes que tus rivales.",
+    "price": 42000,
+    "stock": 6,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "title": "Codenames",
+    "description": "Un juego de palabras y deducción en el que dos equipos compiten para descubrir a sus agentes siguiendo pistas.",
+    "price": 28000,
+    "stock": 20,
+    "image": ""
+  },
+  {
+    "id": 6,
+    "title": "Azul",
+    "description": "Diseña el mosaico más hermoso mientras seleccionas cuidadosamente losetas de colores y administras tus recursos.",
+    "price": 40000,
+    "stock": 4,
+    "image": ""
+  },
+  {
+    "id": 7,
+    "title": "7 Wonders",
+    "description": "Desarrolla una de las grandes civilizaciones de la antigüedad y construye una maravilla que pase a la historia.",
+    "price": 50000,
+    "stock": 9,
+    "image": ""
+  },
+  {
+    "id": 8,
+    "title": "Pandemic",
+    "description": "Trabaja en equipo para detener brotes de enfermedades y encontrar las curas antes de que sea demasiado tarde.",
+    "price": 46000,
+    "stock": 3,
+    "image": ""
+  },
+  {
+    "id": 9,
+    "title": "Splendor",
+    "description": "Colecciona gemas, adquiere cartas de desarrollo y construye un imperio comercial para atraer a nobles.",
+    "price": 36000,
+    "stock": 18,
+    "image": ""
+  },
+  {
+    "id": 10,
+    "title": "Kingdomino",
+    "description": "Construye tu propio reino combinando territorios y consigue la mayor cantidad de puntos mediante una buena planificación.",
+    "price": 25000,
+    "stock": 0,
+    "image": ""
+  }
+]
