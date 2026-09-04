@@ -1,39 +1,75 @@
 import Item from "../Item/Item";
+import { useEffect } from "react";
 
 function ItemsContainer() {
+ 
 
-    const products = [
-        {
-            id: 1,
-            title: "Catan",
-            description:
-                "Un clásico juego de estrategia en el que tendrás que comerciar, construir y expandir tus asentamientos.",
-            price: 45000,
-            stock: 12,
-            image: ""
-        },
-        {
-            id: 2,
-            title: "Carcassonne",
-            description:
-                "Construye ciudades, caminos y monasterios mientras colocas tus seguidores para conseguir la mayor cantidad de puntos.",
-            price: 38000,
-            stock: 8,
-            image: ""
+    useEffect(() => {
+        let timeout
+
+        /**
+         * Simulando llamada a API
+         * @returns {array} - Productos
+         */
+        async function simularFetch() {
+            try {
+                const respuesta = await fetch("/public/data/products.json")
+                if (!respuesta.ok) {
+                    throw new Error(`HTTP ${respuesta.status}`);
+                }
+
+                await new Promise(resolve => {
+                    timeout = setTimeout(() => {
+                        console.log("Simulando espera de 2 segundos");
+                        resolve();
+                    }, 2000);
+                });
+                const data = await respuesta.json();    
+                return data
+
+                
+            } catch (error) {
+                console.log(error, "Error obteniendo productos, base de datos no disponible")
+                
+            } finally {
+                clearTimeout(timeout)
+            }
+            
         }
-    ];
+
+    async function cargarProductos() {
+        const productos = await simularFetch();
+        if (!productos) {
+            console.log("No se pudieron cargar los productos");
+        return;
+        }
+
+        console.log(productos);
+    }
+
+    cargarProductos();
+
+    return () => {
+        clearTimeout(timeout)
+    };
+    }, []);
+
 
 
     return (
         <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
+            
+
+
+
             {/* <h3>{props.greeting}</h3> */}
         
-            {products.map( product => (
+            {/* {products.map( product => (
                 <Item product={product}/>
             )
 
             )
-            }
+            } */}
 
 
 
