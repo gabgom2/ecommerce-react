@@ -1,9 +1,11 @@
 import Item from "../Item/Item";
 import { useEffect } from "react";
+import { useState } from "react";
 
-function ItemsContainer() {
+function ItemsContainer(props) {
+
+    const [listadoProductos, setListadoProductos] = useState([]);
  
-
     useEffect(() => {
         let timeout
 
@@ -37,46 +39,41 @@ function ItemsContainer() {
             
         }
 
-    async function cargarProductos() {
-        const productos = await simularFetch();
-        if (!productos) {
-            console.log("No se pudieron cargar los productos");
-        return;
+        async function cargarProductos() {
+
+            const productos = await simularFetch();
+            if (!productos) {
+                console.log("No se pudieron cargar los productos");
+            return;
+            }
+
+            setListadoProductos(productos);
+            console.log(productos);
         }
 
-        console.log(productos);
-    }
+        cargarProductos();
 
-    cargarProductos();
-
-    return () => {
-        clearTimeout(timeout)
-    };
-    }, []);
+        return () => {
+            clearTimeout(timeout)
+        };
+        }, []
+    );
 
 
 
     return (
-        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
+        <>
+            <h1 className="mt-8 text-center text-3xl font-bold text-gray-800 md:text-4xl">{props.greeting}</h1>
             
+            <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
+                 
+                {listadoProductos.map( product => (
+                    <Item key={product.id} product={product}/>
+                ))
+                }
 
-
-
-            {/* <h3>{props.greeting}</h3> */}
-        
-            {/* {products.map( product => (
-                <Item product={product}/>
-            )
-
-            )
-            } */}
-
-
-
-          
-
-
-        </section>
+            </section>
+        </>
     )
 }
 
