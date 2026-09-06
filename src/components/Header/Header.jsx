@@ -5,7 +5,7 @@ import CartWidget from "../CartWidget/CartWidget.jsx";
 
 function Header() {
     return (
-        <header className="flex items-center justify-between bg-emerald-300 px-8 py-3 shadow-sm">
+        <header className="flex items-center justify-between bg-emerald-300 px-12 py-3 shadow-sm">
 
 
 

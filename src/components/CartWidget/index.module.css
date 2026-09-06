@@ -1,7 +1,7 @@
 .cartWidget {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
 }
 
 .cartIcon {
@@ -9,6 +9,7 @@
     color: #333;
     cursor: pointer;
 }
+
 
 .cartIcon:hover {
     color: #666;
