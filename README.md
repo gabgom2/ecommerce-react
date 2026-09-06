@@ -2,24 +2,36 @@
 
 Un ecommerce ficticio para aprender la creación de un proyecto en React JS
 
-Tecnologías utilizadas:
+### Tecnologías utilizadas
 
 * React JS
 * Vite
 
-Librerías utilizadas:
+### Librerías utilizadas
 
 * react-icons
 * TailwindCSS
 
-# Instalación y ejecución
+### Componentes
 
-## Requisitos
+- **Header:** Representa la cabecera del documento, contiene logo de la empresa, navbar y CartWidget.
+- **Navbar:** Enlaces de navegación internos (No funcionales aún).
+- **CartWidget:** Representa los productos que están en el carrito (Número hardcodeado temporalmente).
+- **Main:** La sección principal del documento, contiene a ItemsListContainer.
+- **ItemsListContainer:** Contenedor donde se ubicarán los productos provenientes de una base de datos externa. Simula un fetch desde un json interno con useEffect y renderiza los productos.
+- **Item:** Componente de visualización para un producto específico.
+- **Footer:** Contiene autor del proyecto y créditos de los íconos utilizados.
+
+`---`
+
+## Instalación y ejecución
+
+### Requisitos
 
 - Node.js
 - npm
 
-## Instalación
+### Instalación
 
 Clonar el repositorio:
 
