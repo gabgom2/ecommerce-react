@@ -5,6 +5,7 @@ const productos = [
     description: "Un clásico juego de estrategia en el que tendrás que comerciar, construir y expandir tus asentamientos.",
     price: 45000,
     stock: 12,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=Catan"
   },
   {
@@ -13,6 +14,7 @@ const productos = [
     description: "Construye ciudades, caminos y monasterios mientras colocas tus seguidores para conseguir la mayor cantidad de puntos.",
     price: 38000,
     stock: 8,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=Carcassonne"
   },
   {
@@ -21,6 +23,7 @@ const productos = [
     description: "Un juego creativo de imágenes e imaginación donde tendrás que interpretar pistas y descubrir qué carta eligió el narrador.",
     price: 32000,
     stock: 15,
+    category: "Juegos de fiesta",
     image: "https://placehold.co/600x400?text=Dixit"
   },
   {
@@ -29,6 +32,7 @@ const productos = [
     description: "Compite por construir rutas ferroviarias entre distintas ciudades y completa tus recorridos antes que tus rivales.",
     price: 42000,
     stock: 6,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=Ticket+to+Ride"
   },
   {
@@ -37,6 +41,7 @@ const productos = [
     description: "Un juego de palabras y deducción en el que dos equipos compiten para descubrir a sus agentes siguiendo pistas.",
     price: 28000,
     stock: 20,
+    category: "Juegos de fiesta",
     image: "https://placehold.co/600x400?text=Codenames"
   },
   {
@@ -45,6 +50,7 @@ const productos = [
     description: "Diseña el mosaico más hermoso mientras seleccionas cuidadosamente losetas de colores y administras tus recursos.",
     price: 40000,
     stock: 4,
+    category: "Rompecabezas",
     image: "https://placehold.co/600x400?text=Azul"
   },
   {
@@ -53,6 +59,7 @@ const productos = [
     description: "Desarrolla una de las grandes civilizaciones de la antigüedad y construye una maravilla que pase a la historia.",
     price: 50000,
     stock: 9,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=7+Wonders"
   },
   {
@@ -61,6 +68,7 @@ const productos = [
     description: "Trabaja en equipo para detener brotes de enfermedades y encontrar las curas antes de que sea demasiado tarde.",
     price: 46000,
     stock: 3,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=Pandemic"
   },
   {
@@ -69,6 +77,7 @@ const productos = [
     description: "Colecciona gemas, adquiere cartas de desarrollo y construye un imperio comercial para atraer a nobles.",
     price: 36000,
     stock: 18,
+    category: "Juegos de estrategia",
     image: "https://placehold.co/600x400?text=Splendor"
   },
   {
@@ -77,9 +86,11 @@ const productos = [
     description: "Construye tu propio reino combinando territorios y consigue la mayor cantidad de puntos mediante una buena planificación.",
     price: 25000,
     stock: 0,
+    category: "Rompecabezas",
     image: "https://placehold.co/600x400?text=Kingdomino"
   }
 ];
+
 
 
 function getProducts() {
