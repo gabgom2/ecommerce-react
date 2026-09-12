@@ -1,4 +1,4 @@
-import Item from "../Item/Item";
+import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 import getProducts from "../../asyncMock";
 
@@ -50,9 +50,7 @@ function ItemsContainer(props) {
                         <p className="mt-4 text-gray-600">Cargando productos...</p>
                     </div>
                 ) : (
-                    listadoProductos.map((product) => (
-                        <Item key={product.id} product={product} />
-                    ))
+                    <ItemList listadoProductos={listadoProductos}/>
                 )}
 
 
