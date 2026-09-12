@@ -1,62 +1,38 @@
 import Item from "../Item/Item";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getProducts from "../../asyncMock";
 
 function ItemsContainer(props) {
 
     const [listadoProductos, setListadoProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
  
     useEffect(() => {
-        let timeout
+        
 
-        /**
-         * Simulando llamada a API
-         * @returns {array} - Productos
-         */
-        async function simularFetch() {
+
+        async function cargarProductos() {
             try {
-                const respuesta = await fetch("/public/data/products.json")
-                if (!respuesta.ok) {
-                    throw new Error(`HTTP ${respuesta.status}`);
-                }
-
-                await new Promise(resolve => {
-                    timeout = setTimeout(() => {
-                        console.log("Simulando espera de 2 segundos");
-                        resolve();
-                    }, 2000);
-                });
-                const data = await respuesta.json();    
-                return data
-
-                
+                const productos = await getProducts()
+                setListadoProductos(productos)                
             } catch (error) {
-                console.log(error, "Error obteniendo productos, base de datos no disponible")
+                console.log(error, "/ Error obteniendo productos")
                 
             } finally {
-                clearTimeout(timeout)
+                setLoading(false);
             }
+
+
+
+
             
         }
 
-        async function cargarProductos() {
+        cargarProductos()
 
-            const productos = await simularFetch();
-            if (!productos) {
-                console.log("No se pudieron cargar los productos");
-            return;
-            }
+        
 
-            setListadoProductos(productos);
-            console.log(productos);
-        }
-
-        cargarProductos();
-
-        return () => {
-            clearTimeout(timeout)
-        };
-        }, []
+    }, []
     );
 
 
@@ -67,10 +43,19 @@ function ItemsContainer(props) {
             
             <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
                  
-                {listadoProductos.map( product => (
-                    <Item key={product.id} product={product}/>
-                ))
-                }
+
+                {loading ? (
+                    <div className="col-span-full flex flex-col items-center justify-center py-10">
+                        <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
+                        <p className="mt-4 text-gray-600">Cargando productos...</p>
+                    </div>
+                ) : (
+                    listadoProductos.map((product) => (
+                        <Item key={product.id} product={product} />
+                    ))
+                )}
+
+
 
             </section>
         </>

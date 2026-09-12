@@ -1,10 +1,11 @@
-function Item({ product: { title, description, price, stock } }) { 
+function Item({ product: { title, description, price, stock, image } }) { 
     return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
     
         <div className="flex h-48 items-center justify-center bg-slate-200">
             {/* imagen */}
-            <span className="text-gray-400">Sin imagen</span>
+            <img src={image} alt={`Imagen de ${title}`} />
+            
         </div>
 
         <div className="flex flex-1 flex-col p-5">
