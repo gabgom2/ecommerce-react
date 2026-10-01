@@ -8,7 +8,7 @@ import ItemList from "../ItemList/ItemList";
 function ItemsContainer(props) {
 
 
-    const { loading, error, data } = useFetch(getProducts)
+    const { loading, error, data: productos } = useFetch(getProducts)
     
     if ( loading ) {
         return (
@@ -32,9 +32,9 @@ function ItemsContainer(props) {
         <>
             <h1 className="mt-8 text-center text-3xl font-bold text-gray-800 md:text-4xl">{props.greeting}</h1>
             
-            <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10">
+            <section className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 mb-20">
 
-                <ItemList listadoProductos={data}/>
+                <ItemList listadoProductos={productos}/>
 
 
 
