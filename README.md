@@ -21,6 +21,9 @@ Un ecommerce ficticio para aprender la creación de un proyecto en React JS
 - **ItemsListContainer:** Contenedor donde se ubicarán los productos provenientes de una base de datos externa.
 - **ItemList:** Este componente se encargará de recorrer el array de productos con un .map() y generar una tarjeta "Item" por cada uno
 - **Item:** Componente de visualización para un producto específico.
+- **ItemDetailContainer:** Similar a ItemLists, realiza un fetch pero a un solo producto por Id
+- **ItemDetail:** Una vista a mayor detalle del producto con información adicional
+- **ItemCount:** Un contador para aumentar la cantidad de productos para agregar al carrito, no deja agregar más del stock disponible
 - **Footer:** Contiene autor del proyecto y créditos de los íconos utilizados.
 
 `---`
