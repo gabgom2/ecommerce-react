@@ -1,3 +1,5 @@
+import Button from "../Button/Button"
+
 function Item({ product: { title, price, image, category } }) { 
     return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
@@ -18,22 +20,14 @@ function Item({ product: { title, price, image, category } }) {
                     {category}
                 </span>
 
-                                <p className="text-xl font-bold text-gray-900">
+                <p className="text-xl font-bold text-gray-900">
                     ${price}
                 </p>
 
             </div>
 
             <div className="mt-auto pt-5">
-
-
-                <button
-                    
-                    className="mt-3 w-full rounded-lg bg-emerald-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-600 disabled:cursor-not-allowed disabled:bg-gray-300"
-                >
-                    Ver detalle
-                </button>
-
+                <Button>Ver detalle</Button>
             </div>
         </div>
 

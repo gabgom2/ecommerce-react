@@ -1,50 +1,57 @@
+import Button from "../Button/Button";
+import { FiCheck, FiX } from "react-icons/fi";
+
+
 function ItemDetail({ producto: { title, description, price, stock, image, category } }) {
     return (
-        <article className="w-full max-w-sm overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
-
-
-            <div className="flex h-48 items-center justify-center bg-slate-200">
-                {/* imagen */}
-                <img src={image} alt={`Imagen de ${title}`} />
+        <article className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr]">
+            <div>
+                <img
+                    src={image}
+                    alt={`Imagen de ${title}`}
+                    className="w-full rounded-xl object-cover"
+                />
             </div>
 
-            <div className="flex flex-1 flex-col p-5 mt-8">
-                <h3 className="text-xl font-semibold text-gray-900">
+            <div className="flex flex-col items-start gap-2 p-3">
+                <h1 className="text-6xl font-bold">
                     {title}
-                </h3>
+                </h1>
 
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    {description}
-                </p>
+                <div className="mt-4 flex w-full items-center justify-between">
 
-                <div className="mt-3 flex items-center justify-between">
-                    <span className="rounded-full bg-blue-300 px-3 py-1 text-xs font-medium text-white">
+                    <span
+                        className={`flex items-center gap-1 p-2 mt-3 rounded-2xl ${
+                            stock > 0 ? "text-emerald-600 bg-emerald-100" : "text-red-600 bg-red-100"
+                        }`}
+                    >
+                        {stock > 0 ? <FiCheck /> : <FiX />}
+                        {stock > 0 ? "Disponible" : "Sin stock"}
+                    </span>
+                    
+                                
+                    <span className="rounded-full bg-blue-300 px-3 py-1 font-medium text-white">
                         {category}
                     </span>
 
-                    <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${
-                            stock > 0
-                                ? "bg-emerald-50 text-emerald-700"
-                                : "bg-red-50 text-red-700"
-                        }`}
-                    >
-                        {stock > 0 ? `${stock} disponibles` : "Sin stock"}
-                    </span>
                 </div>
 
-                <div className="mt-auto pt-5">
-                    <p className="text-xl font-bold text-gray-900">
-                        ${price}
-                    </p>
 
-                    <button
-                        disabled={stock === 0}
-                        className="mt-3 w-full rounded-lg bg-emerald-500 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-600 disabled:cursor-not-allowed disabled:bg-gray-300"
-                    >
-                        Agregar al carrito
-                    </button>
-                </div>
+                <p className="my-4 text-xl font-medium text-gray-600 text-start italic">
+                    {description}
+                </p>
+
+                <p className="text-base font-bold text-gray-900">
+                    Stock: {stock}
+                </p>
+
+                <p className="text-3xl my-4 font-bold text-gray-900">
+                    ${price}
+                </p>
+
+                <Button disabled={stock <= 0}>
+                    Agregar al carrito
+                </Button>
             </div>
 
         </article>
