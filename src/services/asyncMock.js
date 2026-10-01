@@ -1,4 +1,4 @@
-const productos = [
+export const productos = [
   {
     id: 1,
     title: "Catan",
@@ -93,7 +93,7 @@ const productos = [
 
 
 
-function getProducts() {
+export function getProducts() {
     return new Promise((resolve) => {
         setTimeout(() => {
             console.log("Simulando espera de 2 segundos");
@@ -103,4 +103,3 @@ function getProducts() {
 
 
 
-export default getProducts
