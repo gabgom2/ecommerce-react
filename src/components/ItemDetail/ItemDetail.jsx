@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import { FiCheck, FiX } from "react-icons/fi";
+import ItemCount from "../ItemCount/ItemCount";
 
 
 function ItemDetail({ producto: { title, description, price, stock, image, category } }) {
@@ -48,10 +49,20 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
                 <p className="text-3xl my-4 font-bold text-gray-900">
                     ${price}
                 </p>
+                
 
-                <Button disabled={stock <= 0}>
-                    Agregar al carrito
-                </Button>
+                <div className="flex w-full items-center gap-6">
+                    <div className="shrink-0">
+                        <ItemCount stock={stock} />
+                    </div>
+
+                    <div className="flex-1">
+                        <Button disabled={stock <= 0}>
+                            Agregar al carrito
+                        </Button>
+                    </div>
+                </div>
+
             </div>
 
         </article>

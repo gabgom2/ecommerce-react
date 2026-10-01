@@ -96,9 +96,9 @@ export const productos = [
 export function getProducts() {
     return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("Simulando espera de 2 segundos");
+            console.log("Simulando espera de 800 ms");
             resolve(productos);
-        }, 2000);
+        }, 800);
     });}
 
 
