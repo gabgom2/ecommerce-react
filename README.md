@@ -26,7 +26,7 @@ Un ecommerce ficticio para aprender la creación de un proyecto en React JS
 - **ItemCount:** Un contador para aumentar la cantidad de productos para agregar al carrito, no deja agregar más del stock disponible
 - **Footer:** Contiene autor del proyecto y créditos de los íconos utilizados.
 
-`---`
+---
 
 ## Instalación y ejecución
 
