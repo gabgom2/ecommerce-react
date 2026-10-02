@@ -27,7 +27,7 @@ function Item({ product: { title, price, image, category } }) {
             </div>
 
             <div className="mt-auto pt-5">
-                <Button>Ver detalle</Button>
+                <Button className="w-full">Ver detalle</Button>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import { useFetch } from "../../hooks/useFetch";
-import { getProductById } from "../../services/getProductById";
-import ItemDetail from "../ItemDetail/ItemDetail";
+import { useFetch } from "../hooks/useFetch";
+import { getProductById } from "../services/getProductById";
+import ItemDetail from "../components/ItemDetail/ItemDetail";
 
 
 // import { useState, useEffect } from "react";
@@ -42,7 +42,7 @@ const { loading, error, data: producto } = useFetch(fetchProduct);
     return (
     <> 
 
-        <h2 className="my-6 text-center text-xl font-bold text-gray-800 md:text-4xl">{title}</h2>
+        <h2 className="my-10 text-center text-5xl font-bold text-gray-800 md:text-4xl">{title}</h2>
         <section className="mx-auto mt-10 mb-15 flex justify-center">
 
         <ItemDetail producto={producto} />

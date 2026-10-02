@@ -15,7 +15,7 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
             </div>
 
             <div className="flex flex-col items-start gap-2 p-3">
-                <h1 className="text-6xl font-bold">
+                <h1 className="text-5xl font-bold">
                     {title}
                 </h1>
 
@@ -23,7 +23,7 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
 
                     <span
                         className={`flex items-center gap-1 p-2 mt-3 rounded-2xl ${
-                            stock > 0 ? "text-emerald-600 bg-emerald-100" : "text-red-600 bg-red-100"
+                            stock > 0 ? "text-emerald-600 bg-emerald-200" : "text-red-600 bg-red-100"
                         }`}
                     >
                         {stock > 0 ? <FiCheck /> : <FiX />}
@@ -52,12 +52,12 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
                 
 
                 <div className="flex w-full items-center gap-6">
-                    <div className="shrink-0">
+                    <div className="shrink-0 bg-amber-50 rounded-2xl">
                         <ItemCount stock={stock} />
                     </div>
 
                     <div className="flex-1">
-                        <Button disabled={stock <= 0}>
+                        <Button disabled={stock <= 0} className="w-full">
                             Agregar al carrito
                         </Button>
                     </div>

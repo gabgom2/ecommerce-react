@@ -1,21 +1,39 @@
+import { NavLink } from "react-router-dom";
+
+const navLinkStyles = ({ isActive }) =>
+    `text-xl transition-all duration-300 hover:underline hover:underline-offset-4 hover:decoration-2 ${
+        isActive
+            ? "font-bold text-gray-900"
+            : "font-light text-gray-500 hover:text-gray-700"
+    }`;
+
+
+
+
 function Navbar() {
     return (
         <nav>
             <ul className="flex flex-row gap-8 m-8">
-                <a href="#">
-                    <li className="font-semibold text-xl text-gray-900 transition-colors hover:text-slate-800">Juegos de Estrategia</li>
-                </a>
-                <a href="#">
-                    <li className="font-semibold text-xl text-gray-900 transition-colors hover:text-slate-800">Juegos de Fiesta</li>
-                </a>
-                <a href="#">
-                    <li className="font-semibold text-xl text-gray-900 transition-colors hover:text-slate-800">Rompecabezas</li>
-                </a>
+                <li>
+                    <NavLink to="/" className={navLinkStyles}>
+                        Inicio
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/productos" className={navLinkStyles}>
+                        Productos
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink to="/detalle" className={navLinkStyles}>
+                        Detalle
+                    </NavLink>
+                </li>
             </ul>
         </nav>
-
-    )
+    );
 }
 
 export default Navbar;
-
