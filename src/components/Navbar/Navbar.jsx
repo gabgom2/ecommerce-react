@@ -37,12 +37,6 @@ function Navbar() {
                         Juegos de fiesta
                     </NavLink>
                 </li>
-
-                <li>
-                    <NavLink to="/detalle" className={navLinkStyles}>
-                        Detalle de producto
-                    </NavLink>
-                </li>
             </ul>
         </nav>
     );

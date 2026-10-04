@@ -2,19 +2,21 @@ import { useCallback } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { getProductById } from "../services/getProductById";
 import ItemDetail from "../components/ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
 
 
-// import { useState, useEffect } from "react";
+
 
 
 
 
 function ItemDetailContainer( { title }) {
-
+    
+    const { id: productId } = useParams()
 
     const fetchProduct = useCallback(
-    () => getProductById(1),
-    []
+    () => getProductById(Number(productId)),
+    [productId]
 );
 
 const { loading, error, data: producto } = useFetch(fetchProduct);

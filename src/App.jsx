@@ -18,7 +18,7 @@ function App() {
                     <Routes>        
                         <Route path="/" element={<Home />} />
                         <Route path="/category/:id" element={<ItemsContainer />} />
-                        <Route path="/detalle" element={<ItemDetailContainer title="Vista de detalle de producto" />} />
+                        <Route path="/item/:id" element={<ItemDetailContainer title="Vista de detalle de producto" />} />
                         <Route path="*" element={<BadUrl404 /> }  />
                     </Routes>
                 </Layout>

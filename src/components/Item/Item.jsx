@@ -1,12 +1,13 @@
 import Button from "../Button/Button"
+import { Link } from "react-router-dom"
 
-function Item({ product: { title, price, image, category } }) { 
+function Item({ product: { title, price, image, category, id } }) { 
     return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
     
         <div className="flex h-48 items-center justify-center bg-slate-200">
             {/* imagen */}
-            <img src={image} alt={`Imagen de ${title}`} />
+            <img src={image} alt={`Imagen de ${title}`} className="h-full w-full object-cover" />
             
         </div>
 
@@ -25,11 +26,14 @@ function Item({ product: { title, price, image, category } }) {
                 </p>
 
             </div>
-
-            <div className="mt-auto pt-5">
-                <Button className="w-full">Ver detalle</Button>
-            </div>
+    
+            <Link to={`/item/${id}`}>
+                <div className="mt-auto pt-5">
+                    <Button className="w-full">Ver detalle</Button>
+                </div>
+            </Link>
         </div>
+            
 
     </article>
 
