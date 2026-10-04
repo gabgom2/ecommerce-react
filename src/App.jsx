@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import BadUrl404 from './pages/BadUrl404';
 import Layout from './components/Layout/Layout';
+import ItemsContainer from './components/ItemsContainer/ItemsContainer';
 
 
 
@@ -16,6 +17,7 @@ function App() {
                 <Layout>
                     <Routes>        
                         <Route path="/" element={<Home />} />
+                        <Route path="/category/:id" element={<ItemsContainer />} />
                         <Route path="/detalle" element={<ItemDetailContainer title="Vista de detalle de producto" />} />
                         <Route path="*" element={<BadUrl404 /> }  />
                     </Routes>

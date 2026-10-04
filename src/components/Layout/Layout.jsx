@@ -7,15 +7,17 @@ export default function Layout({ children }) {
             className="relative min-h-screen bg-cover bg-center bg-no-repeat"
             style={{
                 backgroundImage: "url('/images/board-game-bg-coelho.jpg')",
-            }}
+        }}
         >
             {/* Capa blanca */}
             <div className="absolute inset-0 bg-white/75" />
 
             {/* Contenido */}
-            <div className="relative z-10">
+            <div className="relative z-10 min-h-screen flex flex-col">
                 <Header />
-                {children}
+                    <div className="flex-1">
+                        {children}
+                    </div>
                 <Footer />
             </div>
         </main>

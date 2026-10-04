@@ -21,19 +21,19 @@ function Navbar() {
                 </li>
 
                 <li>
-                    <NavLink to="/" className={navLinkStyles}>
+                    <NavLink to="/category/juegos-de-estrategia" className={navLinkStyles}>
                         Juegos de estrategia
                     </NavLink>
                 </li>
 
                 <li>
-                    <NavLink to="/" className={navLinkStyles}>
+                    <NavLink to="/category/rompecabezas" className={navLinkStyles}>
                         Rompecabezas
                     </NavLink>
                 </li>
 
                 <li>
-                    <NavLink to="/" className={navLinkStyles}>
+                    <NavLink to="/category/juegos-de-fiesta" className={navLinkStyles}>
                         Juegos de fiesta
                     </NavLink>
                 </li>

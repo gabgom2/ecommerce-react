@@ -1,3 +1,5 @@
+import { slugify } from "./slugify";
+
 export const productos = [
   {
     id: 1,
@@ -93,11 +95,24 @@ export const productos = [
 
 
 
-export function getProducts() {
+export function getProductsFilteredByCategory(category = "all") {
     return new Promise((resolve) => {
         setTimeout(() => {
             console.log("Simulando espera de 800 ms");
-            resolve(productos);
+            if (category === "all") {
+                resolve(productos);
+            }
+            else {
+                const filteredProducts = productos.filter((producto) =>
+                slugify(producto.category) === category)
+
+                if (filteredProducts.length === 0) {
+                resolve(null);
+                return;
+                }
+                
+                resolve(filteredProducts)
+            }
         }, 800);
     });}
 
