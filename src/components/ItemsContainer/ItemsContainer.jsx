@@ -1,6 +1,6 @@
-import { useFetch } from "../hooks/useFetch";
-import { getProducts } from "../services/asyncMock";
-import ItemList from "../components/ItemList/ItemList";
+import { useFetch } from "../../hooks/useFetch";
+import { getProducts } from "../../services/asyncMock";
+import ItemList from "../ItemList/ItemList";
 
 
 
