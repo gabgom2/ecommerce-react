@@ -1,8 +1,6 @@
-import { useState } from "react";
+function ItemCount({stock, contador, setContador}) {
 
-function ItemCount({stock}) {
-
-    const [contador, setContador] = useState(1)
+    
 
     const increaseCounter = () => {
         if (contador < stock) {

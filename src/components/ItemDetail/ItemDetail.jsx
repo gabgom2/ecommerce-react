@@ -1,12 +1,17 @@
 import Button from "../Button/Button";
 import { FiCheck, FiX } from "react-icons/fi";
 import ItemCount from "../ItemCount/ItemCount";
+import { useContext } from "react";
+import { CartContext } from "../../Context/Cart/CartContext";
+import { useState } from "react";
+
 
 
 function ItemDetail({ producto: { title, description, price, stock, image, category } }) {
-    return (<>
-        
 
+    const { addItem } = useContext(CartContext)
+    const [contador, setContador] = useState(1)
+    return (<>    
         <section className="mx-auto mt-10 mb-15 flex flex-col justify-center">
         <h2 className="my-10 text-center text-5xl font-bold text-gray-800 md:text-4xl">Vista de detalle del producto</h2>
         
@@ -60,13 +65,13 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
                     <div className="flex w-full items-center gap-6">
                         { (stock > 0) &&
                             <div className="shrink-0 bg-amber-50 rounded-2xl">
-                                <ItemCount stock={stock} />
+                                <ItemCount stock={stock} contador={contador} setContador={setContador} />
                             </div>
                         }
 
                         <div className="flex-1">
                             <Button disabled={stock <= 0} className="w-full" color="blue"
-                            onClick={() => console.log("Click")}>
+                            onClick={() => console.log("Función Agregar al Carrito")}>
                                 Agregar al carrito
                             </Button>
                         </div>
