@@ -7,7 +7,7 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
     return (<>
         
 
-        <section className="mx-auto mt-10 mb-15 flex justify-center">
+        <section className="mx-auto mt-10 mb-15 flex flex-col justify-center">
         <h2 className="my-10 text-center text-5xl font-bold text-gray-800 md:text-4xl">Vista de detalle del producto</h2>
         
             <article className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr]">
@@ -65,7 +65,7 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
                         }
 
                         <div className="flex-1">
-                            <Button disabled={stock <= 0} className="w-full">
+                            <Button disabled={stock <= 0} className="w-full" color="blue">
                                 Agregar al carrito
                             </Button>
                         </div>
