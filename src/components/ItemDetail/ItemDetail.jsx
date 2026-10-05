@@ -65,7 +65,8 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
                         }
 
                         <div className="flex-1">
-                            <Button disabled={stock <= 0} className="w-full" color="blue">
+                            <Button disabled={stock <= 0} className="w-full" color="blue"
+                            onClick={() => console.log("Click")}>
                                 Agregar al carrito
                             </Button>
                         </div>

@@ -3,7 +3,8 @@ function Button({
     disabled = false,
     
     className = "",
-    color = "default"
+    color = "default",
+    onClick,
 }) {
     let colorStyles;
 
@@ -61,6 +62,7 @@ function Button({
         <button
             disabled={disabled}
             className={styles}
+            onClick={onClick}
         >
             {children}
         </button>
