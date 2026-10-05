@@ -1,9 +1,9 @@
-function ItemCount({stock, contador, setContador}) {
+function ItemCount({stock, contador, setContador, cantidadRestanteParaCompletarStock}) {
 
     
 
     const increaseCounter = () => {
-        if (contador < stock) {
+        if (contador < stock && contador < cantidadRestanteParaCompletarStock) {
             setContador(contador + 1)
         }
     }

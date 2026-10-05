@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import { FiCheck, FiX } from "react-icons/fi";
 import ItemCount from "../ItemCount/ItemCount";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../Context/Cart/CartContext";
 import { useState } from "react";
 
@@ -9,8 +9,20 @@ import { useState } from "react";
 
 function ItemDetail({ producto, producto: { title, description, price, stock, image, category } }) {
 
-    const { addItem } = useContext(CartContext)
+    const { addItem, cart } = useContext(CartContext)
     const [contador, setContador] = useState(1)
+
+    const productoEnCarrito = cart.find(productoCarrito => productoCarrito.id === producto.id )
+    const cantidadRestanteParaCompletarStock =
+        stock - (productoEnCarrito?.quantity ?? 0)
+
+    useEffect(() => {
+        console.log(`Faltan para completar stock: ${cantidadRestanteParaCompletarStock}`)
+    }, [cantidadRestanteParaCompletarStock]);
+
+
+    
+
     return (<>    
         <section className="mx-auto mt-10 mb-15 flex flex-col justify-center">
         <h2 className="my-10 text-center text-5xl font-bold text-gray-800 md:text-4xl">Vista de detalle del producto</h2>
@@ -63,15 +75,17 @@ function ItemDetail({ producto, producto: { title, description, price, stock, im
                     
 
                     <div className="flex w-full items-center gap-6">
-                        { (stock > 0) &&
+                        { (stock > 0 && cantidadRestanteParaCompletarStock > 0) &&
                             <div className="shrink-0 bg-amber-50 rounded-2xl">
-                                <ItemCount stock={stock} contador={contador} setContador={setContador} />
+                                <ItemCount stock={stock} contador={contador} setContador={setContador} cantidadRestanteParaCompletarStock={cantidadRestanteParaCompletarStock}/>
                             </div>
                         }
 
                         <div className="flex-1">
-                            <Button disabled={stock <= 0} className="w-full" color="blue"
-                            onClick={() => addItem( producto , contador )}>
+                            <Button disabled={stock <= 0 || cantidadRestanteParaCompletarStock === 0} className="w-full" color="blue"
+                            onClick={() => {addItem( producto , contador )
+                                setContador(1)
+                            }}>
                                 Agregar al carrito
                             </Button>
                         </div>
