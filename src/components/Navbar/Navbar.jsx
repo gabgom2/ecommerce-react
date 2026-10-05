@@ -14,11 +14,6 @@ function Navbar() {
     return (
         <nav>
             <ul className="flex flex-row gap-8 m-8">
-                <li>
-                    <NavLink to="/" className={navLinkStyles}>
-                        Inicio
-                    </NavLink>
-                </li>
 
                 <li>
                     <NavLink to="/category/juegos-de-estrategia" className={navLinkStyles}>

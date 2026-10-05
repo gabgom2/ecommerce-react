@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-function ItemDetail({ producto: { title, description, price, stock, image, category } }) {
+function ItemDetail({ producto, producto: { title, description, price, stock, image, category } }) {
 
     const { addItem } = useContext(CartContext)
     const [contador, setContador] = useState(1)
@@ -71,7 +71,7 @@ function ItemDetail({ producto: { title, description, price, stock, image, categ
 
                         <div className="flex-1">
                             <Button disabled={stock <= 0} className="w-full" color="blue"
-                            onClick={() => console.log("Función Agregar al Carrito")}>
+                            onClick={() => addItem( producto , contador )}>
                                 Agregar al carrito
                             </Button>
                         </div>
