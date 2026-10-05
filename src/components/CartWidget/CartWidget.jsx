@@ -1,8 +1,10 @@
 import styles from "./index.module.css"
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function CartWidget() {
     return (
+        <Link to="/cart">
         <div className={styles.cartWidget}>
             {/* Icono carrito */}
             <FaShoppingCart className={styles.cartIcon}/>
@@ -13,6 +15,7 @@ function CartWidget() {
             </span>
 
         </div>
+        </Link>
 
     )
 }

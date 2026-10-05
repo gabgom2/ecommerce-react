@@ -17,7 +17,7 @@ function Button({
 
         case "red":
             colorStyles = `
-                bg-red-500
+                bg-red-700
                 hover:bg-red-600
             `;
             break;
