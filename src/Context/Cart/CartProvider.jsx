@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
     }
 
     const removeItem = (id) => {
-        setCart(cart.filter((product) => (!product.id === id)))
+        setCart(cart.filter((product) => (product.id !== id)))
     };
 
     const clearCart = () => {
@@ -44,8 +44,6 @@ export const CartProvider = ({ children }) => {
     };
 
     const totalQuantity = cart.reduce((acc, product) => {return acc + product.quantity}, 0)
-
-
 
     const totalPrice = cart.reduce((acc, product) => {return acc + ( product.price * product.quantity) }, 0)  
 

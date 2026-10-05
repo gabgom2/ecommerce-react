@@ -15,7 +15,7 @@ export default function Layout({ children }) {
             {/* Contenido */}
             <div className="relative z-10 min-h-screen flex flex-col">
                 <Header />
-                    <div className="flex-1">
+                    <div className="flex-1 flex justify-center">
                         {children}
                     </div>
                 <Footer />

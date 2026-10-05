@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import { FiCheck, FiX } from "react-icons/fi";
 import ItemCount from "../ItemCount/ItemCount";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../Context/Cart/CartContext";
 import { useState } from "react";
 
@@ -16,9 +16,6 @@ function ItemDetail({ producto, producto: { title, description, price, stock, im
     const cantidadRestanteParaCompletarStock =
         stock - (productoEnCarrito?.quantity ?? 0)
 
-    useEffect(() => {
-        console.log(`Faltan para completar stock: ${cantidadRestanteParaCompletarStock}`)
-    }, [cantidadRestanteParaCompletarStock]);
 
 
     
