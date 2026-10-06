@@ -1,13 +1,21 @@
-import { productos } from "./asyncMock";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
 
+export async function getProductById(productId) {
 
+    console.log("productId:", productId);
+    console.log("tipo:", typeof productId);
+    const productRef = doc(db, "productos", productId);
 
-export function getProductById(productId) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const producto = productos.find((producto) => producto.id === productId);
-      producto ? resolve(producto) : reject(new Error("Producto no encontrado"));
-    }, 500); // simula la demora de una API
-  });
+    const snapshot = await getDoc(productRef);
+
+    if (!snapshot.exists()) {
+        throw new Error("Producto no encontrado");
+    }
+
+    return {
+        id: snapshot.id,
+        ...snapshot.data(),
+    };
 }
 

@@ -1,7 +1,7 @@
 import Button from "../Button/Button"
 import { Link } from "react-router-dom"
 
-function Item({ product: { title, price, image, category, id } }) { 
+function Item({ product: { title, price, image, id, categoryName = "Sin categoría" } }) { 
     return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
     
@@ -18,7 +18,7 @@ function Item({ product: { title, price, image, category, id } }) {
 
             <div className="mt-4 flex items-center justify-between">
                 <span className="rounded-full bg-blue-300 px-3 py-1 text-xs font-medium text-white">
-                    {category}
+                    {categoryName}
                 </span>
 
                 <p className="text-xl font-bold text-gray-900">

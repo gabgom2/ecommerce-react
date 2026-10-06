@@ -15,7 +15,7 @@ function ItemDetailContainer() {
     const { id: productId } = useParams()
 
     const fetchProduct = useCallback(
-    () => getProductById(Number(productId)),
+    () => getProductById(productId),
     [productId]
 );
 

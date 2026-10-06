@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-function ItemDetail({ producto, producto: { title, description, price, stock, image, category } }) {
+function ItemDetail({ producto, producto: { title, description, price, stock, image, categoryName = "Sin categoría" } }) {
 
     const { addItem, cart } = useContext(CartContext)
     const [contador, setContador] = useState(1)
@@ -52,7 +52,7 @@ function ItemDetail({ producto, producto: { title, description, price, stock, im
                         
                                     
                         <span className="rounded-full bg-blue-300 px-3 py-1 font-medium text-white">
-                            {category}
+                            {categoryName}
                         </span>
 
                     </div>

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import { getProductsFilteredByCategory } from "../../services/asyncMock";
+import { getProductsFilteredByCategory } from "../../services/getProductsFilteredByCategory";
 import ItemList from "../ItemList/ItemList";
 import BadUrl404 from "../../pages/BadUrl404";
 
