@@ -51,11 +51,13 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
 ### Servicios
 
+**editUsername** - Permite al usuario modificar su nameDisplay
+
 **getProductsFilteredByCategory** - Obtiene los productos de la base de datos firestore, acepta categorías para filtrado por parámetro
 
 **getProductById** - Similar a getproducts(), pero obtiene un producto en base a su ID
 
-**generateCheckout** - Genera ordenes de compra (Temporalmente solo alertas de Sweet Alert 2)
+**generateCheckout** - Genera ordenes de compra mediante notificaciones SweetAlert2. Detecta si el usuario está logeado (en cuyo caso puede generar una orden de compra y enviarla a Firebase) o no (En este caso será invitado a registrarse o logearse)
 
 ### Rutas de Navegación dinámicas
 
