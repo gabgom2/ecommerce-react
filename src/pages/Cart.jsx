@@ -1,16 +1,21 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/Cart/CartContext";
 import Button from "../components/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem/CartItem";
 import { IoTrashBin } from "react-icons/io5";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { generateCheckout } from "../services/generateCheckout";
+import { AuthContext } from "../Context/Auth/AuthContext";
+
 
 
 
 function Cart() {
     const { cart, clearCart, totalQuantity, totalPrice } = useContext(CartContext)
+    const { user } = useContext(AuthContext)
     const buttonStyles = "flex justify-center items-center gap-2"
+    const navigate = useNavigate();
 
     if ( totalQuantity === 0) {
         return (<main className="py-8 flex text-center justify-center flex-1 items-center flex-col gap-10">
@@ -38,7 +43,7 @@ function Cart() {
                 
             <div className="flex gap-6">
                 <Button color="red" onClick={clearCart} className={buttonStyles}>Vaciar carrito<IoTrashBin size={24}/></Button>
-                <Button color="blue" onClick={()=>console.log("Finalizar compra...")} className={buttonStyles}>Realizar pago<RiMoneyDollarCircleFill size={24}/></Button>
+                <Button color="blue" onClick={() => generateCheckout(navigate, user, cart, totalPrice, totalQuantity)} className={buttonStyles}>Realizar pago<RiMoneyDollarCircleFill size={24}/></Button>
             </div>
         </section>
     </main> );

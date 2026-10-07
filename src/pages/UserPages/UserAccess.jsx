@@ -1,11 +1,12 @@
 import Button from "../../components/Button/Button";
 import { AuthContext } from "../../Context/Auth/AuthContext";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function UserAccess() {
 
     const {user, logout} = useContext(AuthContext)
+    const navigate = useNavigate()
     
 
     if (user) {
@@ -21,7 +22,8 @@ function UserAccess() {
                 
                 
 
-                <div className="flex ">
+                <div className="flex gap-4">
+                    <Button color="blue" onClick={() => navigate(-1)}>Volver</Button>
                     <Button color="red" onClick={logout}>Cerrar sesión</Button>
                     
                 </div>
