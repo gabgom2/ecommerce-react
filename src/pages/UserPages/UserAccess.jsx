@@ -5,17 +5,24 @@ import { Link } from "react-router-dom";
 
 function UserAccess() {
 
-    const {user} = useContext(AuthContext)
-    console.log("UserAccess se renderizó");
+    const {user, logout} = useContext(AuthContext)
+    
 
     if (user) {
         return (
             <main className="flex flex-col justify-center items-center gap-14">
+                
+                {/* Saludar al usuario si está logeado */}
+                { ( user.displayName )
+                    ? <p className="text-xl font-bold">Hola, {user.displayName}</p>
+                    : <p className="text-xl font-bold">Hola, {user.email}</p>
 
-                <p className="text-xl font-bold">Hola, {user.displayName}</p>
+                }
+                
+                
 
                 <div className="flex ">
-                    <Button color="red">Cerrar sesión</Button>
+                    <Button color="red" onClick={logout}>Cerrar sesión</Button>
                     
                 </div>
                 
@@ -33,7 +40,7 @@ function UserAccess() {
 
                 <div className="flex gap-6">
                     <Link to="/user-access/login">
-                        <Button color="blue">Acceder</Button>
+                        <Button color="blue">Iniciar Sesión</Button>
                     </Link>
                     <Link to="/user-access/register">
                         <Button color="blue">Registrarse</Button>

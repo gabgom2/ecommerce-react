@@ -32,7 +32,12 @@ function Header() {
                     {( user )
                         ? 
                             <div className="flex gap-2 border-black border-2 rounded-2xl p-2 bg-emerald-400 items-center">
-                                <FaCircleUser size={28} /><p>{user.displayName}</p>
+                                <FaCircleUser size={28} />
+                                {(user.displayName)
+                                    ? <p>{user.displayName}</p>
+                                    : <p>{user.email}</p>
+                                }
+                                
                             </div>
                         :
                         <div className="flex gap-2 border-black border-2 rounded-2xl p-2 bg-emerald-400 items-center hover:bg-emerald-200 cursor-pointer">
