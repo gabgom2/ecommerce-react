@@ -21,7 +21,6 @@ export async function getProductsFilteredByCategory(category = "all") {
         return null;
     }
 
-    console.log(productos)
     return productos;
 
 }
