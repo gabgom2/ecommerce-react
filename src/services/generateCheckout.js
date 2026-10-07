@@ -7,7 +7,8 @@ export async function generateCheckout(
     user,
     cart,
     totalPrice,
-    totalQuantity
+    totalQuantity,
+    clearCart
 ) {
 
     if (user) {
@@ -65,6 +66,9 @@ export async function generateCheckout(
                     text: "Tu orden fue creada correctamente.",
                     icon: "success"
                 });
+
+                clearCart()
+
 
             } catch (error) {
                 console.error("Error al crear la orden:", error);

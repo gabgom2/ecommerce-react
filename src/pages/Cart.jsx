@@ -43,7 +43,7 @@ function Cart() {
                 
             <div className="flex gap-6">
                 <Button color="red" onClick={clearCart} className={buttonStyles}>Vaciar carrito<IoTrashBin size={24}/></Button>
-                <Button color="blue" onClick={() => generateCheckout(navigate, user, cart, totalPrice, totalQuantity)} className={buttonStyles}>Realizar pago<RiMoneyDollarCircleFill size={24}/></Button>
+                <Button color="blue" onClick={() => generateCheckout(navigate, user, cart, totalPrice, totalQuantity, clearCart)} className={buttonStyles}>Realizar pago<RiMoneyDollarCircleFill size={24}/></Button>
             </div>
         </section>
     </main> );
