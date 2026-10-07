@@ -160,3 +160,5 @@ build/
 *.sln
 *.sw?
 
+# Carpeta de testing
+test/
