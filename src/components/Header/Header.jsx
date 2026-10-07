@@ -3,6 +3,7 @@ import Navbar from "../Navbar/Navbar.jsx"
 import logo from "../../assets/logo/board-game.png";
 import CartWidget from "../CartWidget/CartWidget.jsx";
 import { Link } from "react-router-dom";
+import { FaCircleUser } from "react-icons/fa6";
 
 
 function Header() {
@@ -20,6 +21,9 @@ function Header() {
             <div className={styles.headerRight}>
                 <Navbar />
                 <CartWidget />
+                <div className="flex gap-2 border-black border-2 rounded-2xl p-2 bg-emerald-400 items-center">
+                    <FaCircleUser size={28} /><p>User</p>
+                </div>
             </div>
 
         </header>
