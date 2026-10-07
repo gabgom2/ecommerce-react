@@ -4,14 +4,16 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
 ### Tecnologías utilizadas
 
-* React JS
-* Vite
+* **React JS**
+* **Vite**
+* **Firebase**
 
 ### Librerías utilizadas
 
-* react-icons / Componentes de iconos personalizados
-* TailwindCSS / Librería de estilos
-* react-router-dom / Sirve para navegación estilo SPA
+* **react-icons** / Componentes de iconos personalizados
+* **TailwindCSS** / Librería de estilos
+* **react-router-dom** / Sirve para navegación estilo SPA
+* **SweetAlert2** / Para notificaciones relacionadas con las órdenes de compra
 
 ### Componentes
 
@@ -35,18 +37,25 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 * **Cart** - El carrito de compras
 * **Home** -  Da una bienvenida y muestra todos los productos
 * **ItemDetailContainer** - Página para mostrar el detalle de un producto específico
+* **UserPages:** UserAccess, UserLogin, UserRegister. Páginas para registro, inicio de sesión y acceso para usuarios
 
 ### Custom Hooks
 
 **useFetch** - Evita duplicar la lógica del fetch que se utiliza en varios componentes
 
+### Contextos
+
+**AuthContext** - Contexto relacionado a autenticación de usuarios
+
+**CartContext** - Contexto relacionado a los items en el carrito de compras
+
 ### Servicios
 
-**asyncMock** - Mock de datos de productos, incluye función getProducts() que simula un fetch
+**getProductsFilteredByCategory** - Obtiene los productos de la base de datos firestore, acepta categorías para filtrado por parámetro
 
 **getProductById** - Similar a getproducts(), pero obtiene un producto en base a su ID
 
-**slugify** - Función de soporte para convertir urls en texto con guiones minúsculas y sin acentos
+**generateCheckout** - Genera ordenes de compra (Temporalmente solo alertas de Sweet Alert 2)
 
 ### Rutas de Navegación dinámicas
 
@@ -54,6 +63,9 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 * **"/category/:id"** - Filtrado de productos por categoría
 * **"/item/:id"** - Vista de detalle de un item en particular, incluye función para agregarlo al carrito
 * **"/cart"** - Carrito de compras
+* **"/user-access"** - Muestra una vista de acciones relacionadas a autenticación de usuario
+* **"/user-access/login"** - Página de inicio de sesión para usuarios
+* **"/user-access/register"** - Página de registro para usuarios
 * **"*"** - Página de error en caso de tipear mal una URL
 
 ---
