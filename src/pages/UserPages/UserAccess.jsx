@@ -1,7 +1,8 @@
 import Button from "../../components/Button/Button";
+import UserAccessButtons from "../../components/UserAccessButtons/UserAccessButtons";
 import { AuthContext } from "../../Context/Auth/AuthContext";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { editUsername } from "../../services/editUsername";
 
 
@@ -46,14 +47,7 @@ function UserAccess() {
 
                 <p className="text-xl font-bold">Usted no se encuentra registrado en la base de usuarios</p>
 
-                <div className="flex gap-6">
-                    <Link to="/user-access/login">
-                        <Button color="blue">Iniciar Sesión</Button>
-                    </Link>
-                    <Link to="/user-access/register">
-                        <Button color="blue">Registrarse</Button>
-                    </Link>
-                </div>
+                <UserAccessButtons />
                 
                 
             </main>

@@ -3,17 +3,14 @@ import { CartContext } from "../Context/Cart/CartContext";
 import Button from "../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem/CartItem";
-import { IoTrashBin } from "react-icons/io5";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { generateCheckout } from "../services/generateCheckout";
-import { AuthContext } from "../Context/Auth/AuthContext";
+import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
 
 
 
 
 function Cart() {
-    const { cart, clearCart, totalQuantity, totalPrice } = useContext(CartContext)
-    const { user } = useContext(AuthContext)
+    const { cart, totalQuantity, totalPrice } = useContext(CartContext)
     const buttonStyles = "flex justify-center items-center gap-2"
     const navigate = useNavigate();
 
@@ -42,8 +39,9 @@ function Cart() {
                 
                 
             <div className="flex gap-6">
-                <Button color="red" onClick={clearCart} className={buttonStyles}>Vaciar carrito<IoTrashBin size={24}/></Button>
-                <Button color="blue" onClick={() => generateCheckout(navigate, user, cart, totalPrice, totalQuantity, clearCart)} className={buttonStyles}>Realizar pago<RiMoneyDollarCircleFill size={24}/></Button>
+                <ButtonEmptyCart>Vaciar Carrito</ButtonEmptyCart>
+
+                <Button color="blue" onClick={() => navigate('/checkout')} className={buttonStyles}>Generar Orden<RiMoneyDollarCircleFill size={24}/></Button>
             </div>
         </section>
     </main> );
