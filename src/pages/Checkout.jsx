@@ -1,10 +1,13 @@
 import UserAccessButtons from "../components/UserAccessButtons/UserAccessButtons";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../config/firebase.js"
 import { AuthContext } from "../Context/Auth/AuthContext";
 import { CartContext } from "../Context/Cart/CartContext";
 import { useContext } from "react";
 import { useState } from "react";
-
 import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
+import EmptyCartDisplay from "../components/EmptyCartDisplay/EmptyCartDisplay.jsx";
+
 
 function Checkout() {
     const { user } = useContext(AuthContext) || {};
@@ -13,17 +16,42 @@ function Checkout() {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [error, setError] = useState("");
+    const [city, setCity] = useState("")
+    const cleanPhone = phone.trim().replace(/-/g, "").replace(/\s/g, "");
+    const cleanName = fullName.trim();
+    const cleanCity = city.trim();
     
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setError("");
 
-        if (!fullName.trim() || !phone.trim() || !address.trim()) {
+        if (!cleanPhone || !cleanName || !cleanCity ||!address.trim()) {
             setError("Completá todos los campos para continuar.");
             return;
         }
+
+        
+        if (!/^\d+$/.test(cleanPhone)) {
+            setError("El teléfono debe contener únicamente números y guiones.");
+            return;
         }
+
+        
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s'-]+$/.test(cleanName)) {
+            setError("El nombre no debe contener números ni símbolos especiales.");
+            return;
+        }
+
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s'-]+$/.test(cleanCity)) {
+            setError("La ciudad no debe contener símbolos especiales.");
+            return;
+        }
+
+    }
+
+
+
 
     if (!user) {
         return(
@@ -38,37 +66,34 @@ function Checkout() {
 
             </>)
     }
+
+    if (cart.length === 0) {
+        return(<EmptyCartDisplay/>)}
+
+    /* Aquí empieza la sección para generar Orden si hay user y el carrito contiene productos */
     return ( <>
             <main className="flex flex-col justify-center items-center gap-8 py-4">
                 <h1>Previsualizando orden de compra</h1>
+
                 <article className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg">
-    <h2 className="mb-4 text-xl font-bold">
-        Resumen de tu compra
-    </h2>
+                    <h2 className="mb-4 text-xl font-bold">
+                        Resumen de tu compra
+                    </h2>
 
-       
-    {cart.length === 0 ? (
-        <p className="text-gray-500">
-            Tu carrito está vacío.
-        </p>
-    ) : ( 
-        <div className="flex flex-col gap-3">
-           <ul>            
-                    { cart.map((producto) => { 
-                        return (<li>{producto.title} x {producto.quantity} (Subtotal: ${producto.price * producto.quantity})</li>
-
-
-                    )
-                    
-                })
-                }
-            </ul>
-            <strong>Total: ${totalPrice}</strong>
-            <ButtonEmptyCart >Cancelar Compra</ButtonEmptyCart >
-        </div>
-    )}
-
-    </article>
+        
+        
+                    <div className="flex flex-col gap-3">
+                        <ul>            
+                                { cart.map((producto) => { 
+                                    return (<li>{producto.title} x {producto.quantity} (Subtotal: ${producto.price * producto.quantity})</li>)
+                                    }
+                                )}
+                        </ul>
+                        <strong>Total: ${totalPrice}</strong>
+                        <ButtonEmptyCart >Cancelar Compra</ButtonEmptyCart >
+                    </div>
+                
+                </article>
 
                 <form onSubmit={handleSubmit} className="space-y-5 rounded-xl bg-gray-100 p-8 shadow-lg">
 
@@ -133,6 +158,27 @@ function Checkout() {
                             rows={3}
                             required
                             className="w-full resize-y rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                        />
+                    </div>
+
+                    {/* Ciudad */}
+                    <div>
+                        <label
+                            htmlFor="city"
+                            className="mb-1 block text-sm font-medium"
+                        >
+                            Ciudad
+                        </label>
+
+                        <input
+                            id="city"
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            placeholder="Ej. Buenos Aires"
+                            autoComplete="address-level2"
+                            required
+                            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
                         />
                     </div>
 

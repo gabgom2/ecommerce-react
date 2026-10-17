@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/Cart/CartContext";
 import Button from "../components/Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem/CartItem";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
+import EmptyCartDisplay from "../components/EmptyCartDisplay/EmptyCartDisplay";
 
 
 
@@ -15,15 +16,7 @@ function Cart() {
     const navigate = useNavigate();
 
     if ( totalQuantity === 0) {
-        return (<main className="py-8 flex text-center justify-center flex-1 items-center flex-col gap-10">
-                
-                <div>
-                    <h2 className="font-bold text-2xl">El carrito de compras se encuentra vacío</h2>
-                </div>
-                <Link to="/">
-                    <Button>Volver al Inicio</Button>
-                </Link>
-            </main>)
+        return (<EmptyCartDisplay/>)
     }
 
     return ( <main className="p-16 flex text-center items-center flex-col gap-16 justify-start">
