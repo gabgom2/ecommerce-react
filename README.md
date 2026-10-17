@@ -58,7 +58,7 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
 **getProductsFilteredByCategory** - Obtiene los productos de la base de datos, acepta categorías para filtrado por parámetro
 
-**getProductById** - O	btiene un producto en base a su ID
+**getProductById** - Obtiene un producto en base a su ID
 
 ### Rutas de Navegación dinámicas
 
