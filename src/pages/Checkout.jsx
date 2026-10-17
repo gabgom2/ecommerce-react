@@ -1,17 +1,22 @@
-import UserAccessButtons from "../components/UserAccessButtons/UserAccessButtons";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../config/firebase.js"
 import { AuthContext } from "../Context/Auth/AuthContext";
 import { CartContext } from "../Context/Cart/CartContext";
 import { useContext } from "react";
 import { useState } from "react";
+import UserAccessButtons from "../components/UserAccessButtons/UserAccessButtons";
 import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
 import EmptyCartDisplay from "../components/EmptyCartDisplay/EmptyCartDisplay.jsx";
+import Swal from "sweetalert2";
 
 
 function Checkout() {
+
+    /* Contextos */
     const { user } = useContext(AuthContext) || {};
-    const { cart, totalPrice } = useContext(CartContext) || {};
+    const { cart, totalPrice, clearCart } = useContext(CartContext) || {};
+
+    /* Formularios */
     const [fullName, setFullName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
@@ -20,19 +25,21 @@ function Checkout() {
     const cleanPhone = phone.trim().replace(/-/g, "").replace(/\s/g, "");
     const cleanName = fullName.trim();
     const cleanCity = city.trim();
+    const cleanAdress = address.trim()
     
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
 
-        if (!cleanPhone || !cleanName || !cleanCity ||!address.trim()) {
+        /* Validación de datos form */
+        if (!cleanPhone || !cleanName || !cleanCity || !cleanAdress) {
             setError("Completá todos los campos para continuar.");
             return;
         }
 
         
-        if (!/^\d+$/.test(cleanPhone)) {
+        if (!/^\+?\d+$/.test(cleanPhone)) {
             setError("El teléfono debe contener únicamente números y guiones.");
             return;
         }
@@ -47,6 +54,41 @@ function Checkout() {
             setError("La ciudad no debe contener símbolos especiales.");
             return;
         }
+
+        /* Orden de compra */
+        const order = {
+            buyer: {
+            name: cleanName,
+            email: user.email,
+            phone: cleanPhone,
+            address: cleanAdress,
+            city: cleanCity,
+            },
+            items: cart.map((item) => ({
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            quantity: item.quantity,
+            })),
+            total: totalPrice,
+            userId: user.uid,
+            date: serverTimestamp(),
+        };
+
+        const docRef = await addDoc(collection(db, "ordenes"), order);
+
+        console.log(`Generada orden: ${docRef.id}`)
+
+        await Swal.fire({
+                            title: "¡Orden generada!",
+                            text: "Tu orden fue creada correctamente",
+                            icon: "success",
+                            footer: `Código de orden: ${docRef.id}`,
+        });
+        
+        clearCart()
+
+
 
     }
 
@@ -75,6 +117,8 @@ function Checkout() {
             <main className="flex flex-col justify-center items-center gap-8 py-4">
                 <h1>Previsualizando orden de compra</h1>
 
+                {/* Preview Carrito */}
+
                 <article className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg">
                     <h2 className="mb-4 text-xl font-bold">
                         Resumen de tu compra
@@ -85,7 +129,7 @@ function Checkout() {
                     <div className="flex flex-col gap-3">
                         <ul>            
                                 { cart.map((producto) => { 
-                                    return (<li>{producto.title} x {producto.quantity} (Subtotal: ${producto.price * producto.quantity})</li>)
+                                    return (<li key={producto.id}>{producto.title} x {producto.quantity} (Subtotal: ${producto.price * producto.quantity})</li>)
                                     }
                                 )}
                         </ul>
