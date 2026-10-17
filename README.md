@@ -40,6 +40,7 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 * **Home** -  Da una bienvenida y muestra todos los productos
 * **ItemDetailContainer** - Página para mostrar el detalle de un producto específico
 * **UserPages:** UserAccess, UserLogin, UserRegister. Páginas para registro, inicio de sesión y acceso para usuarios
+* **Checkout:** Página utilizada para generar ordenes de compra. Incluye vista protegida para usuarios sin sesión iniciada o sin productos en el carrito, formulario de compra con validación de datos, y notificación de SweetAlert al realizar la orden de compra. Al confirmar la orden, el carrito se vacía y se invita al usuario a volver al Inicio.
 
 ### Custom Hooks
 
@@ -68,7 +69,7 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 * **"/user-access"** - Muestra una vista de acciones relacionadas a autenticación de usuario
 * **"/user-access/login"** - Página de inicio de sesión para usuarios
 * **"/user-access/register"** - Página de registro para usuarios
-* **"/checkout"** - Luego de hacer click en el carrito en el botón "Generar Orden", el usuario es redirigido a esta página, donde puede llenar un formulario con sus respectivas validaciones para crear una orden de compra a FireStore. La página contiene una vista protegida si el usuario no ha iniciado sesión o no tiene productos en el carrito. Luego de efectuar la orden, el usuario es notificado (Alerta SweetAlert2) y el carrito se vacía.
+* **"/checkout"** - Ruta donde se pueden generar ordenes de compra (Ver sección de páginas "Checkout" para más detalles)
 * **"*"** - Página de error en caso de tipear mal una URL
 
 ---
