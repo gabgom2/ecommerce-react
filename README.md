@@ -18,14 +18,16 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 ### Componentes
 
 - **Button:** Un componente que aplica estilos para un botón y acepta función onClick y diferentes estilos de colores
+- **ButtonEmptyCart:** Un botón que específicamente vacía el carrito de productos
+- **UserAccessButtons:** Dos botones para registrarse e iniciar sesión
 - **CartItem:** Una tarjeta que representa un producto en el carrito, incluye botón para quitarlo del mismo
 - **CartWidget:** Link al carrito y un badge indica la cantidad de productos en el mismo
-- **Context / Cart:** Contexto y Provider para poder utilizar funciones y estado del carrito en toda la aplicación
+- **EmptyCartDisplay:** Un componente que indica que el carrito no contiene productos e invita al usuario a regresar a la página de inicio
 - **Layout:** Organiza los elementos header, footer, fondo y el contenido principal de la página para asegurar persistencia
 - **Header:** Representa la cabecera del documento, contiene logo de la empresa, Navbar y CartWidget.
 - **Navbar:** Enlaces de navegación por categoría.
 - **Footer:** Contiene autor del proyecto y créditos de los íconos utilizados.
-- **ItemsListContainer:** Contenedor donde se ubicarán los productos provenientes de una base de datos externa.
+- **ItemsListContainer:** Contenedor donde se ubicarán los productos provenientes de Firestore.
 - **ItemList:** Este componente se encargará de recorrer el array de productos con un .map() y generar una tarjeta "Item" por cada uno
 - **Item:** Componente de visualización para un producto específico.
 - **ItemDetail:** Una vista a mayor detalle del producto con información adicional
@@ -51,13 +53,11 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
 ### Servicios
 
-**editUsername** - Permite al usuario modificar su nameDisplay
+**editUsername** - Permite al usuario modificar su `user.displayName`
 
-**getProductsFilteredByCategory** - Obtiene los productos de la base de datos firestore, acepta categorías para filtrado por parámetro
+**getProductsFilteredByCategory** - Obtiene los productos de la base de datos, acepta categorías para filtrado por parámetro
 
-**getProductById** - Similar a getproducts(), pero obtiene un producto en base a su ID
-
-**generateCheckout** - Genera ordenes de compra mediante notificaciones SweetAlert2. Detecta si el usuario está logeado (en cuyo caso puede generar una orden de compra y enviarla a Firebase) o no (En este caso será invitado a registrarse o logearse)
+**getProductById** - O	btiene un producto en base a su ID
 
 ### Rutas de Navegación dinámicas
 
@@ -68,7 +68,32 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 * **"/user-access"** - Muestra una vista de acciones relacionadas a autenticación de usuario
 * **"/user-access/login"** - Página de inicio de sesión para usuarios
 * **"/user-access/register"** - Página de registro para usuarios
+* **"/checkout"** - Luego de hacer click en el carrito en el botón "Generar Orden", el usuario es redirigido a esta página, donde puede llenar un formulario con sus respectivas validaciones para crear una orden de compra a FireStore. La página contiene una vista protegida si el usuario no ha iniciado sesión o no tiene productos en el carrito. Luego de efectuar la orden, el usuario es notificado (Alerta SweetAlert2) y el carrito se vacía.
 * **"*"** - Página de error en caso de tipear mal una URL
+
+---
+
+## Colecciones de FireStore
+
+* **Productos** - Cada documento representa un producto que se puede renderizar en pantalla o agregar al carrito
+* **Ordenes** - Órdenes de compra generadas por los usuarios mediante la página "/checkout"
+
+---
+
+## Variables de Entorno
+
+Se adjunta un archivo **.env.example** para facilitar la creación de las variables de entorno necesarias para conectarse a Firebase desde el archivo "**src/components/config/firebase.js**". 
+
+Cada variable cumple la siguiente función:
+
+* **`VITE_FIREBASE_API_KEY`** : clave de API utilizada para identificar el proyecto de Firebase.
+* **`VITE_FIREBASE_AUTH_DOMAIN`** : dominio utilizado para la autenticación de usuarios.
+* **`VITE_FIREBASE_PROJECT_ID`** : identificador único del proyecto de Firebase.
+* **`VITE_FIREBASE_STORAGE_BUCKET`** : ubicación de almacenamiento de archivos del proyecto.
+* **`VITE_FIREBASE_MESSAGING_SENDER_ID`** : identificador utilizado para los servicios de mensajería de Firebase.
+* **`VITE_FIREBASE_APP_ID`** : identificador de la aplicación registrada en Firebase.
+
+Para configurar estas variables, se debe crear un archivo `.env` en la raíz del proyecto, copiar el contenido de **.env.example** y completar cada valor con los datos correspondientes, disponibles en la configuración del proyecto en Firebase.
 
 ---
 
@@ -84,6 +109,10 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 - Cálculo de cantidad total y precio total
 - Navegación mediante React Router
 - Página 404 para rutas inexistentes
+- Registro e Inicio de sesión para usuarios mediante Firebase Authentication
+- Generación de órdenes de compra conectadas a Firestore
+- Protección de ruta "/checkout" para usuarios no registrados o sin cuenta iniciada
+- Notificación de compra mediante SweetAlert2
 
 ---
 
@@ -111,6 +140,6 @@ Ejecutar el proyecto:
 
 ``npm run dev``
 
-La terminal mostrará la URL a abrir, copiarla a la barra de direcciones de un navegador web (puerto por defecto: 5173)
+La terminal mostrará la URL a abrir, copiarla a la barra de direcciones de un navegador web. Reemplazar [numero] por el valor correspondiente en la terminal (por defecto: 5173)
 
 ``http://localhost:[numero]``
