@@ -4,6 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { getProductsFilteredByCategory } from "../../services/getProductsFilteredByCategory";
 import ItemList from "../ItemList/ItemList";
 import BadUrl404 from "../../pages/BadUrl404";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 function ItemsContainer({ greeting }) {
     const { id: categoryId } = useParams();
@@ -16,10 +17,7 @@ function ItemsContainer({ greeting }) {
 
     if (loading) {
         return (
-            <div className="col-span-full flex flex-col items-center justify-center py-10">
-                <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
-                <p className="mt-4 text-gray-600">Cargando productos...</p>
-            </div>
+            <LoadingSpinner message="Cargando productos..." />
         );
     }
 
