@@ -17,8 +17,9 @@ function CartItem({product: {id, title, image, price, quantity}}) {
         </figure>
         <div className="flex flex-col justify-center gap-3">
             <h3 className="font-bold text-2xl">{title}</h3>
+            <p> Precio unitario: ${price} / Cantidad: {quantity}</p>
             <p className="font-bold">Subtotal: ${price * quantity}</p>
-            <p>Cantidad: {quantity}</p>
+            
             <Button color="red" onClick={() =>removeItem(id)} className="flex justify-center items-center gap-4">Quitar producto<FaTrashAlt size={18} /></Button>
         </div>
 
@@ -30,11 +31,4 @@ function CartItem({product: {id, title, image, price, quantity}}) {
 export default CartItem
 
 
-// category
-// description
-// id
-// image
-// price
-// quantity
-// stock
-// title
+
