@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/Auth/AuthContext";
 import { CartContext } from "../Context/Cart/CartContext";
 import { useContext } from "react";
 import { useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx"
 import UserAccessButtons from "../components/UserAccessButtons/UserAccessButtons";
 import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
 import EmptyCartDisplay from "../components/EmptyCartDisplay/EmptyCartDisplay.jsx";
@@ -13,7 +14,7 @@ import Swal from "sweetalert2";
 function Checkout() {
 
     /* Contextos */
-    const { user } = useContext(AuthContext) || {};
+    const { user, userLoading } = useContext(AuthContext) || {};
     const { cart, totalPrice, clearCart } = useContext(CartContext) || {};
 
     /* Formularios */
@@ -96,17 +97,15 @@ function Checkout() {
 
 
     if (!user) {
-        return(
-            <>
+        return userLoading
+            ? <LoadingSpinner message="Cargando información de usuario" />
+            : (
                 <main className="flex flex-col justify-center items-center gap-8">
                     <p>Solo usuarios registrados pueden generar una orden de compra</p>
                     <p>Por favor, regístrese o inicie sesión para acceder a esta función</p>
                     <UserAccessButtons />
                 </main>
-
-
-
-            </>)
+            );
     }
 
     if (cart.length === 0) {
