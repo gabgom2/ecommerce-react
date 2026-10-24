@@ -4,6 +4,7 @@ import { AuthContext } from "../Context/Auth/AuthContext";
 import { CartContext } from "../Context/Cart/CartContext";
 import { useContext } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner.jsx"
 import UserAccessButtons from "../components/UserAccessButtons/UserAccessButtons";
 import ButtonEmptyCart from "../components/ButtonEmptyCart/ButtonEmptyCart";
@@ -15,7 +16,11 @@ function Checkout() {
 
     /* Contextos */
     const { user, userLoading } = useContext(AuthContext) || {};
-    const { cart, totalPrice, clearCart } = useContext(CartContext) || {};
+    const {
+            cart = [],
+            totalPrice = 0,
+            clearCart
+        } = useContext(CartContext) || {};
 
     /* Formularios */
     const [fullName, setFullName] = useState("");
@@ -23,10 +28,12 @@ function Checkout() {
     const [address, setAddress] = useState("");
     const [error, setError] = useState("");
     const [city, setCity] = useState("")
+    const [loading, setLoading] = useState(false);
     const cleanPhone = phone.trim().replace(/-/g, "").replace(/\s/g, "");
     const cleanName = fullName.trim();
     const cleanCity = city.trim();
     const cleanAdress = address.trim()
+    const navigate = useNavigate();
     
 
     const handleSubmit = async (e) => {
@@ -41,7 +48,7 @@ function Checkout() {
 
         
         if (!/^\+?\d+$/.test(cleanPhone)) {
-            setError("El teléfono debe contener únicamente números y guiones.");
+            setError("Ingresá un número de teléfono válido");
             return;
         }
 
@@ -76,22 +83,35 @@ function Checkout() {
             date: serverTimestamp(),
         };
 
-        const docRef = await addDoc(collection(db, "ordenes"), order);
+        setLoading(true);
 
-        console.log(`Generada orden: ${docRef.id}`)
+        try {
+            const docRef = await addDoc(collection(db, "ordenes"), order);
+            
+            await Swal.fire({
+                icon: "success",
+                title: "¡Compra realizada con éxito!",
+                text: `Tu código de orden es: ${docRef.id}`,
+                });
+            
+            clearCart();
+            navigate("/");
+        } catch (error) {
+            console.error("Error al generar la orden:", error);
+            
+            await Swal.fire({
+            icon: "error",
+            title: "Error al procesar la compra",
+            text: "No se pudo registrar tu orden. Por favor, verificá tu conexión e intentalo nuevamente.",
+            });
+        } finally {
+            setLoading(false);
+        }
+        };
 
-        await Swal.fire({
-                            title: "¡Orden generada!",
-                            text: "Tu orden fue creada correctamente",
-                            icon: "success",
-                            footer: `Código de orden: ${docRef.id}`,
-        });
-        
-        clearCart()
 
 
-
-    }
+    
 
 
 
@@ -235,9 +255,10 @@ function Checkout() {
                     {/* Botón */}
                     <button
                         type="submit"
+                        disabled={loading}
                         className="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        Confirmar orden
+                        {loading ? "Procesando compra..." : "Confirmar orden"}
                     </button>
 
                 </form>
