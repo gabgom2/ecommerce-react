@@ -5,7 +5,7 @@ function Item({ product: { title, price, image, id, categoryName = "Sin categor√
     return (
     <article className="flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-shadow hover:shadow-md">
     
-        <div className="flex h-48 items-center justify-center bg-slate-200">
+        <div className="flex h-48 items-center justify-center bg-white">
             {/* imagen */}
             <img src={image} 
             alt={`Imagen de ${title}`} 
