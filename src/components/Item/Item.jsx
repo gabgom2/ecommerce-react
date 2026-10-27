@@ -10,7 +10,7 @@ function Item({ product: { title, price, image, id, categoryName = "Sin categor√
             <img src={image} 
             alt={`Imagen de ${title}`} 
             loading="lazy"
-            className="h-full w-full object-cover" />
+            className="h-full w-full object-contain" />
             
         </div>
 
