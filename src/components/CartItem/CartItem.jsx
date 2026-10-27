@@ -13,7 +13,10 @@ function CartItem({product: {id, title, image, price, quantity}}) {
     return ( <article className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr] bg-green-100 p-5 rounded-2xl">
         
         <figure className="flex h-40 bg-amber-900">
-            <img src={image} alt={`Imagen de ${title}`} className="h-full w-full object-cover" />
+            <img src={image} 
+            alt={`Imagen de ${title}`} 
+            loading="lazy"
+            className="h-full w-full object-cover" />
         </figure>
         <div className="flex flex-col justify-center gap-3">
             <h3 className="font-bold text-2xl">{title}</h3>

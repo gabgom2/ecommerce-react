@@ -6,7 +6,7 @@ export default function Layout({ children }) {
         <main
             className="relative min-h-screen bg-cover bg-center bg-no-repeat"
             style={{
-                backgroundImage: "url('/images/board-game-bg-coelho.jpg')",
+                backgroundImage: "url('/images/board-game-bg-coelho.webp')",
         }}
         >
             {/* Capa blanca */}

@@ -7,7 +7,10 @@ function Item({ product: { title, price, image, id, categoryName = "Sin categor√
     
         <div className="flex h-48 items-center justify-center bg-slate-200">
             {/* imagen */}
-            <img src={image} alt={`Imagen de ${title}`} className="h-full w-full object-cover" />
+            <img src={image} 
+            alt={`Imagen de ${title}`} 
+            loading="lazy"
+            className="h-full w-full object-cover" />
             
         </div>
 
