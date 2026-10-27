@@ -14,7 +14,7 @@ function Item({ product: { title, price, image, id, categoryName = "Sin categor√
             
         </div>
 
-        <div className="flex flex-1 flex-col p-5">
+        <div className="flex flex-1 flex-col p-5 bg-green-100">
             <h3 className="text-xl font-semibold text-gray-900">
                 {title}
             </h3>
