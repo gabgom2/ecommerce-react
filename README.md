@@ -2,6 +2,10 @@
 
 Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
+### Sitio desplegado en Vercel
+
+* Dominio: [ecommerce-react-six-swart.vercel.app](https://ecommerce-react-six-swart.vercel.app/)
+
 ### Tecnologías utilizadas
 
 * **React JS**
@@ -27,11 +31,12 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 - **Header:** Representa la cabecera del documento, contiene logo de la empresa, Navbar y CartWidget.
 - **Navbar:** Enlaces de navegación por categoría.
 - **Footer:** Contiene autor del proyecto y créditos de los íconos utilizados.
-- **ItemsListContainer:** Contenedor donde se ubicarán los productos provenientes de Firestore.
+- **ItemsContainer:** Contenedor donde se ubicarán los productos provenientes de Firestore.
 - **ItemList:** Este componente se encargará de recorrer el array de productos con un .map() y generar una tarjeta "Item" por cada uno
 - **Item:** Componente de visualización para un producto específico.
 - **ItemDetail:** Una vista a mayor detalle del producto con información adicional
 - **ItemCount:** Recibe por props cantidad máxima según stock y cantidad de productos ya en el carrito, permite mostrar y modificar la cantidad antes de agregarla al carrito de compras
+- **LoadingSpinner:** Un componente para mejorar la experiencia del usuario, muestra un spinner mientras se cargan productos
 
 ### Páginas
 
@@ -83,7 +88,7 @@ Un ecommerce ficticio para aprendizaje de proyectos en React JS
 
 ## Variables de Entorno
 
-Se adjunta un archivo **.env.example** para facilitar la creación de las variables de entorno necesarias para conectarse a Firebase desde el archivo "**src/components/config/firebase.js**". 
+Se adjunta un archivo **.env.example** para facilitar la creación de las variables de entorno necesarias para conectarse a Firebase desde el archivo "**src/components/config/firebase.js**".
 
 Cada variable cumple la siguiente función:
 
