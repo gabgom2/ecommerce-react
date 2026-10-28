@@ -29,11 +29,11 @@ function ItemDetail({ producto, producto: { title, description, price, stock, im
         
             <article className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr] bg-gray-200 p-6 rounded-2xl">
 
-                <div>
+                <div className="bg-white rounded-xl">
                     <img
                         src={image}
                         alt={`Imagen de ${title}`}
-                        className="w-full rounded-xl object-cover"
+                        className="w-full  object-contain p-4"
                     />
                 </div>
 

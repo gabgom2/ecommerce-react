@@ -2,6 +2,7 @@
     position: relative;
     width: fit-content;
     height: fit-content;
+    flex-shrink: 0;
 
 }
 
@@ -9,6 +10,8 @@
     font-size: 3rem;
     color: #333;
     cursor: pointer;
+    flex-shrink: 0;
+
 }
 
 

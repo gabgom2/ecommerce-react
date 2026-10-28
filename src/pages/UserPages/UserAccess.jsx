@@ -17,7 +17,7 @@ function UserAccess() {
 
     if (user) {
         return (
-            <main className="flex flex-col justify-center items-center gap-14">
+            <main className="flex flex-1 w-full flex-col justify-center items-center gap-14">
                 
                 {/* Saludar al usuario si está logeado */}
                 { ( user.displayName )
@@ -43,9 +43,9 @@ function UserAccess() {
     else {
         return ( 
             
-            <main className="flex flex-col justify-center items-center gap-14">
+            <main className="flex flex-col justify-center items-center gap-14 flex-1 w-full">
 
-                <p className="text-xl font-bold">Usted no se encuentra registrado en la base de usuarios</p>
+                <p className="text-xl font-bold p-4 text-center">Usted no se encuentra registrado en la base de usuarios</p>
 
                 <UserAccessButtons />
                 

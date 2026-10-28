@@ -17,22 +17,22 @@ function Header() {
         <header className="flex items-center justify-between bg-emerald-300 px-12 py-3 shadow-sm">
 
 
-            <Link to="/">
+            <Link to="/" className="hidden md:block">
                 <div className={styles.logo}>
                     <img src={logo} alt="Logo del comercio" />
-                    <h1 className={` ${styles.headerTitle} text-4xl`}>BoardMania</h1>
+                    <h1 className={` ${styles.headerTitle} text-4xl hidden lg:block leading-none m-0`}>BoardMania</h1>
                 </div>
             </Link>
 
-            <div className={styles.headerRight}>
+            <div className={`${styles.headerRight} justify-center md:justify-end gap-6 md:gap-8`}>
                 <Navbar />
                 <CartWidget />
 
-                <Link to="/user-access">
+                <Link to="/user-access" className="shrink-0" >
                     {( user )
                         ? 
                             <div className="flex gap-2 border-black border-2 rounded-2xl p-2 bg-emerald-400 items-center">
-                                <FaCircleUser size={28} />
+                                <FaCircleUser size={28} className="shrink-0"/>
                                 {(user.displayName)
                                     ? <p>{user.displayName}</p>
                                     : <p>{user.email}</p>
@@ -41,7 +41,7 @@ function Header() {
                             </div>
                         :
                         <div className="flex gap-2 border-black border-2 rounded-2xl p-2 bg-emerald-400 items-center hover:bg-emerald-200 cursor-pointer">
-                                <FaCircleUser size={28} /><p>Acceder</p>
+                                <FaCircleUser size={28} className="shrink-0"/><p className="hidden md:block">Acceder</p>
                             </div>
                     }
                 </Link>

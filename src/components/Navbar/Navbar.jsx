@@ -17,7 +17,7 @@ const navLinkStyles = ({ isActive }) =>
 function Navbar() {
     return (
         <nav>
-            <ul className="flex flex-row m-4">
+            <ul className="flex flex-row m-2 md:m-4">
 
                 <li>
                             <NavLink
