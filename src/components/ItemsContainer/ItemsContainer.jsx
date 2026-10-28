@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import { getProductsFilteredByCategory } from "../../services/getProductsFilteredByCategory";
 import ItemList from "../ItemList/ItemList";
-import BadUrl404 from "../../pages/BadUrl404";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const categoryNames = {
@@ -31,14 +30,14 @@ function ItemsContainer() {
 
     if (error) {
         return (
-            <p className="mt-4 text-red-800">
+            <p className="mt-4 text-red-800 p-4">
                 Ocurrió un error al obtener productos
             </p>
         );
     }
 
     if (!productos) {
-        return <BadUrl404 />;
+        return <p className="mt-4 text-red-800 p-4">No se encontraron productos en dicha categoría</p>;
     }
 
 
