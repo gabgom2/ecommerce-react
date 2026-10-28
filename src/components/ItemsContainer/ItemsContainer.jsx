@@ -6,8 +6,16 @@ import ItemList from "../ItemList/ItemList";
 import BadUrl404 from "../../pages/BadUrl404";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
-function ItemsContainer({ greeting }) {
+const categoryNames = {
+    "juegos-de-fiesta": "Juegos de Fiesta",
+    "juegos-de-estrategia": "Juegos de Estrategia",
+    "rompecabezas": "Juegos de Rompecabezas",
+};
+
+function ItemsContainer() {
+    
     const { id: categoryId } = useParams();
+    const categoryName = categoryNames[categoryId];
 
     const fetchProducts = useCallback(() => {
         return getProductsFilteredByCategory(categoryId);
@@ -35,15 +43,15 @@ function ItemsContainer({ greeting }) {
 
 
     return (
-        <>
-            <h1 className="mt-12 text-center text-6xl font-bold text-gray-800 md:text-4xl">
-                {greeting}
+        <main className="flex flex-col">
+            <h1 className="mt-12 text-center text-2xl sm:text-4xl lg:text-6xl font-bold text-gray-800">
+                {categoryName}
             </h1>
 
             <section className="mx-auto mb-20 grid max-w-7xl grid-cols-1 gap-6 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 <ItemList listadoProductos={productos} />
             </section>
-        </>
+        </main>
     );
 }
 
