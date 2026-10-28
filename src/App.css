@@ -44,5 +44,12 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+@media (min-width: 768px) {
+    .group:hover #categories-menu,
+    .group:focus-within #categories-menu {
+        display: block;
+    }
+}
+
 
 

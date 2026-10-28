@@ -17,7 +17,7 @@ function UserAccess() {
 
     if (user) {
         return (
-            <main className="flex flex-1 w-full flex-col justify-center items-center gap-14">
+            <main className="flex flex-1 w-full flex-col justify-center items-center gap-14 text-center px-4">
                 
                 {/* Saludar al usuario si está logeado */}
                 { ( user.displayName )

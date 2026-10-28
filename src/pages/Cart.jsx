@@ -19,7 +19,7 @@ function Cart() {
         return (<EmptyCartDisplay/>)
     }
 
-    return ( <main className="p-16 flex text-center items-center flex-col gap-16 justify-start">
+    return ( <main className="p-4 md:p-8 lg:p-16 flex text-center items-center flex-col gap-16 justify-start">
         <h1 className="font-semibold text-4xl">Carro de compras</h1>
         <section className="flex flex-col gap-6 items-center">
             { cart.map((productoCarrito) => <CartItem key={productoCarrito.id} product={productoCarrito} />)}

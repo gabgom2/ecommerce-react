@@ -25,9 +25,9 @@ function ItemDetail({ producto, producto: { title, description, price, stock, im
 
     return (<>    
         <section className="mx-auto mt-10 mb-15 flex flex-col justify-center">
-        <h2 className="my-10 text-center text-5xl font-bold text-gray-800 md:text-4xl">Vista de detalle del producto</h2>
+        <h2 className="my-10 text-center text-4xl font-bold text-gray-800 md:text-4xl px-2">Vista de detalle del producto</h2>
         
-            <article className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr] bg-gray-200 p-6 rounded-2xl">
+            <article className="mx-4 md:mx-6 mt-10 grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-[2fr_3fr] bg-gray-200 p-6 rounded-2xl">
 
                 <div className="bg-white rounded-xl">
                     <img

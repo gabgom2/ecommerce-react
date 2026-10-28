@@ -15,11 +15,11 @@ function Item({ product: { title, price, image, id, categoryName = "Sin categor√
         </div>
 
         <div className="flex flex-1 flex-col p-5 bg-green-100">
-            <h3 className="text-xl font-semibold text-gray-900">
+            <h3 className="text-xl font-semibold text-gray-900 text-center">
                 {title}
             </h3>
 
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-4 flex items-center justify-between gap-6">
                 <span className="rounded-full bg-blue-300 px-3 py-1 text-xs font-medium text-white">
                     {categoryName}
                 </span>
