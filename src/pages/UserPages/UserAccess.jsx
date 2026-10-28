@@ -1,5 +1,6 @@
 import Button from "../../components/Button/Button";
 import UserAccessButtons from "../../components/UserAccessButtons/UserAccessButtons";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/Auth/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,17 @@ function UserAccess() {
     const navigate = useNavigate()
     const handleEditUsername = () => {
         editUsername(updateUserName);
+    };
+    const handleLogout = async () => {
+        await logout();
+
+        Swal.fire({
+            title: "¡Sesión cerrada!",
+            text: "Has cerrado sesión correctamente.",
+            icon: "success",
+            timer: 3500,
+            showConfirmButton: true,
+        });
     };
     
 
@@ -31,7 +43,7 @@ function UserAccess() {
                 <div className="flex gap-4">
                     <Button color="blue" onClick={() => navigate(-1)}>Volver</Button>
                     <Button onClick={handleEditUsername}>Editar nombre</Button>
-                    <Button color="red" onClick={logout}>Cerrar sesión</Button>
+                    <Button color="red" onClick={handleLogout}>Cerrar sesión</Button>
                     
                 </div>
                 
@@ -45,7 +57,7 @@ function UserAccess() {
             
             <main className="flex flex-col justify-center items-center gap-14 flex-1 w-full">
 
-                <p className="text-xl font-bold p-4 text-center">Usted no se encuentra registrado en la base de usuarios</p>
+                <p className="text-xl font-bold p-4 text-center">Usted no tiene sesión activa</p>
 
                 <UserAccessButtons />
                 

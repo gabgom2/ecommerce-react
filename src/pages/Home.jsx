@@ -8,7 +8,7 @@ function Home() {
         Boardmania
     </h1>
 
-    <p className="my-6 text-gray-500 max-w-xl">
+    <p className="my-6 text-gray-500 max-w-xl px-4">
         Descubrí juegos de tablero para compartir, competir y pasar
         un buen rato.
     </p>
